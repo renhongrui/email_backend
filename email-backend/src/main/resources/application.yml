@@ -1,0 +1,102 @@
+ATP:
+  version: 1.0.0
+  name: 邮件提测
+server:
+  address: 0.0.0.0
+  port: 8090
+  #tomcat配置
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 200
+    accept-count: 400
+    min-spare-threads: 5
+    max-connections: 400
+    connection-timeout: 60000
+  servlet:
+    context-path: /
+    session:
+      timeout: 36000 #超时时间10个小时
+spring:
+  application:
+    name: email-backend
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      # 重写了CommonsMultipartResolver,需要使用
+      enabled: false
+      max-request-size: 100MB
+  mvc:
+    date-format: yyyy-mm-dd hh:MM:ss
+    async:
+      request-timeout: 60s
+    static-path-pattern: /**
+  # http请求配置
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+  datasource:
+    #   url: jdbc:mysql://192.168.99.71:3306/atp?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/msb_mars?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: zhaohui1017
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 初始化大小，最小，最大
+      initialSize: 5
+      minIdle: 3
+      maxActive: 20
+      #  配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,log4j2
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=1000
+      # 合并多个DruidDataSource的监控数据
+      useGlobalDataSourceStat: true
+      # 开启二级缓存
+      cachePrepStmts: true
+  #邮箱配置
+  mail:
+    host: smtp.qq.com
+    default-encoding: UTF-8
+    username: 568330959@qq.com
+    password: mvrbymhunxbkbfha
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 30000
+          socketFactory:
+            class:  javax.net.ssl.SSLSocketFactory
+            port: 465
+            starttls:
+              enable: true
+              required: true
+
+mybatis:
+  mapperLocations: classpath*:com/msb/email/dao/*.xml
+  typeAliasesPackage: com.msb.email.entity.*
+  configLocation: classpath:/config/mybatis-config.xml
+
+
+# pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

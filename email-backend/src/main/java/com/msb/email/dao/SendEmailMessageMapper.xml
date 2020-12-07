@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msb.email.dao.SendEmailMessageDao">
+  <resultMap id="BaseResultMap" type="com.msb.email.entity.SendEmailMessage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="submit_describe" jdbcType="VARCHAR" property="submitDescribe" />
+    <result column="code_review" jdbcType="VARCHAR" property="codeReview" />
+    <result column="case_info" jdbcType="VARCHAR" property="caseInfo" />
+    <result column="products_result" jdbcType="VARCHAR" property="productsResult" />
+    <result column="ui__result" jdbcType="VARCHAR" property="uiResult" />
+    <result column="product_manager" jdbcType="VARCHAR" property="productManager" />
+    <result column="web_developer" jdbcType="VARCHAR" property="webDeveloper" />
+    <result column="back_end_developer" jdbcType="VARCHAR" property="backEndDeveloper" />
+    <result column="tester" jdbcType="VARCHAR" property="tester" />
+    <result column="client_developer" jdbcType="VARCHAR" property="clientDeveloper" />
+    <result column="front_end_debug" jdbcType="VARCHAR" property="frontEndDebug" />
+    <result column="app_server_debug" jdbcType="VARCHAR" property="appServerDebug" />
+    <result column="through_debug" jdbcType="VARCHAR" property="throughDebug" />
+    <result column="three_debug" jdbcType="VARCHAR" property="threeDebug" />
+    <result column="git_url" jdbcType="VARCHAR" property="gitUrl" />
+    <result column="gir_name" jdbcType="VARCHAR" property="girName" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="reviser" jdbcType="VARCHAR" property="reviser" />
+    <result column="from_person" jdbcType="VARCHAR" property="fromPerson" />
+    <result column="to_person" jdbcType="VARCHAR" property="toPerson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, project_name, create_time, creator, submit_describe, code_review, case_info, 
+    products_result, ui__result, product_manager, web_developer, back_end_developer, 
+    tester, client_developer, front_end_debug, app_server_debug, through_debug, three_debug, 
+    git_url, gir_name, result, modify_time, reviser, from_person, to_person
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from msb_send_email_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from msb_send_email_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.msb.email.entity.SendEmailMessage">
+    insert into msb_send_email_message (id, project_name, create_time, 
+      creator, submit_describe, code_review, 
+      case_info, products_result, ui__result, 
+      product_manager, web_developer, back_end_developer, 
+      tester, client_developer, front_end_debug, 
+      app_server_debug, through_debug, three_debug, 
+      git_url, gir_name, result, 
+      modify_time, reviser, from_person, 
+      to_person)
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=VARCHAR}, #{submitDescribe,jdbcType=VARCHAR}, #{codeReview,jdbcType=VARCHAR}, 
+      #{caseInfo,jdbcType=VARCHAR}, #{productsResult,jdbcType=VARCHAR}, #{uiResult,jdbcType=VARCHAR}, 
+      #{productManager,jdbcType=VARCHAR}, #{webDeveloper,jdbcType=VARCHAR}, #{backEndDeveloper,jdbcType=VARCHAR}, 
+      #{tester,jdbcType=VARCHAR}, #{clientDeveloper,jdbcType=VARCHAR}, #{frontEndDebug,jdbcType=VARCHAR}, 
+      #{appServerDebug,jdbcType=VARCHAR}, #{throughDebug,jdbcType=VARCHAR}, #{threeDebug,jdbcType=VARCHAR}, 
+      #{gitUrl,jdbcType=VARCHAR}, #{girName,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{reviser,jdbcType=VARCHAR}, #{fromPerson,jdbcType=VARCHAR}, 
+      #{toPerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.msb.email.entity.SendEmailMessage">
+    insert into msb_send_email_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="submitDescribe != null">
+        submit_describe,
+      </if>
+      <if test="codeReview != null">
+        code_review,
+      </if>
+      <if test="caseInfo != null">
+        case_info,
+      </if>
+      <if test="productsResult != null">
+        products_result,
+      </if>
+      <if test="uiResult != null">
+        ui__result,
+      </if>
+      <if test="productManager != null">
+        product_manager,
+      </if>
+      <if test="webDeveloper != null">
+        web_developer,
+      </if>
+      <if test="backEndDeveloper != null">
+        back_end_developer,
+      </if>
+      <if test="tester != null">
+        tester,
+      </if>
+      <if test="clientDeveloper != null">
+        client_developer,
+      </if>
+      <if test="frontEndDebug != null">
+        front_end_debug,
+      </if>
+      <if test="appServerDebug != null">
+        app_server_debug,
+      </if>
+      <if test="throughDebug != null">
+        through_debug,
+      </if>
+      <if test="threeDebug != null">
+        three_debug,
+      </if>
+      <if test="gitUrl != null">
+        git_url,
+      </if>
+      <if test="girName != null">
+        gir_name,
+      </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="reviser != null">
+        reviser,
+      </if>
+      <if test="fromPerson != null">
+        from_person,
+      </if>
+      <if test="toPerson != null">
+        to_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDescribe != null">
+        #{submitDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="codeReview != null">
+        #{codeReview,jdbcType=VARCHAR},
+      </if>
+      <if test="caseInfo != null">
+        #{caseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="productsResult != null">
+        #{productsResult,jdbcType=VARCHAR},
+      </if>
+      <if test="uiResult != null">
+        #{uiResult,jdbcType=VARCHAR},
+      </if>
+      <if test="productManager != null">
+        #{productManager,jdbcType=VARCHAR},
+      </if>
+      <if test="webDeveloper != null">
+        #{webDeveloper,jdbcType=VARCHAR},
+      </if>
+      <if test="backEndDeveloper != null">
+        #{backEndDeveloper,jdbcType=VARCHAR},
+      </if>
+      <if test="tester != null">
+        #{tester,jdbcType=VARCHAR},
+      </if>
+      <if test="clientDeveloper != null">
+        #{clientDeveloper,jdbcType=VARCHAR},
+      </if>
+      <if test="frontEndDebug != null">
+        #{frontEndDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="appServerDebug != null">
+        #{appServerDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="throughDebug != null">
+        #{throughDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="threeDebug != null">
+        #{threeDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="gitUrl != null">
+        #{gitUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="girName != null">
+        #{girName,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null">
+        #{reviser,jdbcType=VARCHAR},
+      </if>
+      <if test="fromPerson != null">
+        #{fromPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="toPerson != null">
+        #{toPerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.msb.email.entity.SendEmailMessage">
+    update msb_send_email_message
+    <set>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDescribe != null">
+        submit_describe = #{submitDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="codeReview != null">
+        code_review = #{codeReview,jdbcType=VARCHAR},
+      </if>
+      <if test="caseInfo != null">
+        case_info = #{caseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="productsResult != null">
+        products_result = #{productsResult,jdbcType=VARCHAR},
+      </if>
+      <if test="uiResult != null">
+        ui__result = #{uiResult,jdbcType=VARCHAR},
+      </if>
+      <if test="productManager != null">
+        product_manager = #{productManager,jdbcType=VARCHAR},
+      </if>
+      <if test="webDeveloper != null">
+        web_developer = #{webDeveloper,jdbcType=VARCHAR},
+      </if>
+      <if test="backEndDeveloper != null">
+        back_end_developer = #{backEndDeveloper,jdbcType=VARCHAR},
+      </if>
+      <if test="tester != null">
+        tester = #{tester,jdbcType=VARCHAR},
+      </if>
+      <if test="clientDeveloper != null">
+        client_developer = #{clientDeveloper,jdbcType=VARCHAR},
+      </if>
+      <if test="frontEndDebug != null">
+        front_end_debug = #{frontEndDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="appServerDebug != null">
+        app_server_debug = #{appServerDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="throughDebug != null">
+        through_debug = #{throughDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="threeDebug != null">
+        three_debug = #{threeDebug,jdbcType=VARCHAR},
+      </if>
+      <if test="gitUrl != null">
+        git_url = #{gitUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="girName != null">
+        gir_name = #{girName,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null">
+        reviser = #{reviser,jdbcType=VARCHAR},
+      </if>
+      <if test="fromPerson != null">
+        from_person = #{fromPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="toPerson != null">
+        to_person = #{toPerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.msb.email.entity.SendEmailMessage">
+    update msb_send_email_message
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      submit_describe = #{submitDescribe,jdbcType=VARCHAR},
+      code_review = #{codeReview,jdbcType=VARCHAR},
+      case_info = #{caseInfo,jdbcType=VARCHAR},
+      products_result = #{productsResult,jdbcType=VARCHAR},
+      ui__result = #{uiResult,jdbcType=VARCHAR},
+      product_manager = #{productManager,jdbcType=VARCHAR},
+      web_developer = #{webDeveloper,jdbcType=VARCHAR},
+      back_end_developer = #{backEndDeveloper,jdbcType=VARCHAR},
+      tester = #{tester,jdbcType=VARCHAR},
+      client_developer = #{clientDeveloper,jdbcType=VARCHAR},
+      front_end_debug = #{frontEndDebug,jdbcType=VARCHAR},
+      app_server_debug = #{appServerDebug,jdbcType=VARCHAR},
+      through_debug = #{throughDebug,jdbcType=VARCHAR},
+      three_debug = #{threeDebug,jdbcType=VARCHAR},
+      git_url = #{gitUrl,jdbcType=VARCHAR},
+      gir_name = #{girName,jdbcType=VARCHAR},
+      result = #{result,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      reviser = #{reviser,jdbcType=VARCHAR},
+      from_person = #{fromPerson,jdbcType=VARCHAR},
+      to_person = #{toPerson,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from msb_send_email_message
+  </select>
+
+  <select id="selectPage"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from msb_send_email_message
+    <if test="searchKey != null">
+      where project_name like concat('%',#{searchKey},'%')
+      or submit_describe like concat('%',#{searchKey},'%')
+      or case_info like concat('%',#{searchKey},'%')
+    </if>
+    order by create_time desc
+  </select>
+
+</mapper>

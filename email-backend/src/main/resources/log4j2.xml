@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 该xml配置中,xml元素大小写不敏感 -->
+<!-- status="off",log4j2把自身事件记录到控制台的配置，off表示不记录，其余的记录有trace，debug，list，warn，error，fatal -->
+<!-- monitorInterval表示检测更改配置的时间,单位是秒,最小间隔为5秒,0或负数表示不检测 -->
+<configuration monitorInterval="0" name="test-cfg" status="info">
+
+    <!-- 常量引用 -->
+    <properties>
+        <property name="LOG_HOME">/opt/logs/atp</property>
+        <property name="FORMAT">%d{HH:mm:ss.SSS} [%t] %-5level %logger{15} - %status%n</property>
+    </properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="[%data{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%level][%class][%line]:%message%n"/>
+        </Console>
+        <RollingRandomAccessFile append="true" fileName="${LOG_HOME}/info.log"
+                                 filePattern="${LOG_HOME}/info.%d{yyyy-MM-dd}.log.gz" name="info">
+            <PatternLayout
+                    pattern="[%data{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%level][%class][%line]:%message%n"/>
+            <Filters>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile append="true" fileName="${LOG_HOME}/warn.log"
+                                 filePattern="${LOG_HOME}/warn.%d{yyyy-MM-dd}.log.gz" name="warn">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout
+                    pattern="[%data{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%level][%class][%line]:%message%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile append="true" fileName="${LOG_HOME}/error.log"
+                                 filePattern="${LOG_HOME}/error.%d{yyyy-MM-dd}.log.gz" name="error">
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout
+                    pattern="[%data{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%level][%class][%line]:%message%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <!-- synchronize -->
+        <RollingRandomAccessFile append="true" fileName="${LOG_HOME}/synchronize.log"
+                                 filePattern="${LOG_HOME}/synchronize.%d{yyyy-MM-dd}-%i.log.gz" name="synchronizeLog">
+            <PatternLayout
+                    pattern="[%data{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%level][%class][%line]:%message%n"/>
+            <Filters>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingRandomAccessFile>
+    </appenders>
+    <!-- 接收appender -->
+    <loggers>
+        <logger level="info" name="org.apache.http"/>
+        <!-- Spring -->
+        <logger level="info" name="org.springframework"/>
+        <logger additivity="false" level="error" name="com.alibaba.dubbo">
+            <appender-ref ref="info"/>
+        </logger>
+        <Logger name="org.quartz" level="error" additivity="false">
+            <AppenderRef ref="info" />
+        </Logger>
+        <!-- mybatis loggers -->
+        <logger level="info" name="com.baomidou.mybatisplus.core.MybatisConfiguration"/>
+        <logger level="info" name="com.ibatis"/>
+        <logger level="info" name="com.ibatis.common.jdbc.SimpleDataSource"/>
+        <logger level="info" name="com.ibatis.common.jdbc.ScriptRunner"/>
+        <logger level="info" name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate"/>
+
+        <!-- sql loggers -->
+        <logger additivity="true" level="info" name="java.sql.Connection"/>
+        <logger additivity="true" level="info" name="java.sql.Statement"/>
+        <logger additivity="true" level="info" name="java.sql.PreparedStatement"/>
+        <logger additivity="true" level="info" name="java.sql.ResultSet"/>
+        <!-- General Apache libraries -->
+        <logger level="WARN" name="org.apache"/>
+        <logger level="WARN" name="io.netty"/>
+        <!-- root logger,一般用于放置所有的appender -->
+        <root level="DEBUG">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="info"/>
+        </root>
+    </loggers>
+
+</configuration>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h1 align="center" style="width:80%">提测邮件</h1>
+    <table border="2" bordercolor="black" cellspacing="0" cellpadding="5" style="width: 80%; margin-top: 20px;text-align: center;">
+        <tbody>
+        <tr>
+            <td style="width: 20%" rowspan="6">提测信息</td>
+            <td style="width: 20%">项目名称</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${projectName}">
+                    项目名称
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">提测功能描述</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${subidescribe}">
+                    提测功能描述
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">Code Review人员</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${codeReview}">
+                    Code Review人员
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">准入Case执行情况</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${caseInfo}">
+                    准入Case执行情况
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">产品验收通过</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none"  th:text="${productsResult}">
+                    产品验收通过
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">UI验收通过</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none"  th:text="${uiResult}">
+                    UI验收通过
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%" rowspan="5">人员信息</td>
+            <td style="width: 20%">产品经理</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none"  th:text="${productManager}">
+                    产品经理
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">前端开发</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${webDeveloper}">
+                   前端开发
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">后端开发</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${backEndDeveloper}">
+                    后端开发
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">测试人员</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${tester}">
+                    测试人员
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">客户端开发</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${clientDeveloper}">
+                    客户端开发
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%" rowspan="4">联调情况</td>
+            <td style="width: 20%">前端和后端联调</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${frontEndDebug}">
+                   前端和后端联调
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">移动端和服务端联调</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${appServerDebug}">
+                    移动端和服务端联调
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">跨业务端联调</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${throughDebug}">
+                    跨业务端联调
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">同第三方联调</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${threeDebug}">
+                    同第三方联调
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%" rowspan="2">内容详情</td>
+            <td style="width: 20%">git仓库地址</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${gitUrl}">
+                    git仓库地址
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">git分支名称</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${girName}">
+                    git分支名称
+                </div></td>
+        </tr>
+        <tr>
+            <td style="width: 20%" rowspan="1">压力测试评估</td>
+            <td style="width: 20%">是否进行压力测试评估</td>
+            <td style="width: 50%;">
+                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${result}">
+                    是否进行压力测试评估
+                </div></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

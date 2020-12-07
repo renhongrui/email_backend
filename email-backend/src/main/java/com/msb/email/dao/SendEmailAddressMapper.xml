@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msb.email.dao.SendEmailAddressDao">
+  <resultMap id="BaseResultMap" type="com.msb.email.entity.SendEmailAddress">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="email_address" jdbcType="VARCHAR" property="emailAddress" />
+    <result column="email_name" jdbcType="VARCHAR" property="emailName" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, email_address , email_name , remarks , create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from msb_send_email_cc_address
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from msb_send_email_cc_address
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.msb.email.entity.SendEmailAddress">
+    insert into msb_send_email_cc_address (id, email_address , email_name , remarks , create_date )
+    values (#{id,jdbcType=INTEGER}, #{emailAddress,jdbcType=VARCHAR},
+     #{emailName,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR},
+     #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.msb.email.entity.SendEmailAddress">
+    insert into msb_send_email_cc_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="emailAddress != null">
+        email_address,
+      </if>
+      <if test="emailName != null">
+        email_name,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="emailAddress != null">
+        #{emailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emailName != null">
+        #{emailName,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.msb.email.entity.SendEmailAddress">
+    update msb_send_email_cc_address
+    <set>
+      <if test="emailAddress != null">
+        email_address = #{emailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emailName != null">
+        email_name = #{emailName,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.msb.email.entity.SendEmailAddress">
+    update msb_send_email_cc_address
+    set email_address = #{emailAddress,jdbcType=VARCHAR},
+      email_name = #{emailName,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from msb_send_email_cc_address
+  </select>
+  <select id="selectPage"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from msb_send_email_cc_address
+    <if test="searchKey != null">
+      where email_address like concat('%',#{searchKey},'%')
+      or email_name like concat('%',#{searchKey},'%')
+      or remarks like concat('%',#{searchKey},'%')
+    </if>
+    order by create_date desc
+  </select>
+
+</mapper>
