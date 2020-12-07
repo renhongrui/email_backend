@@ -38,6 +38,7 @@ public class EmailAddressServerImpl implements EmailAddressServer {
         }
 
         //抄送人姓名
+        //TODO 这个属性没用就删掉
         String emailName = condition.getEmailName();
 
 
@@ -64,6 +65,7 @@ public class EmailAddressServerImpl implements EmailAddressServer {
     public Boolean updateEmail(EmailAddressCondition condition) {
 
         SendEmailAddress sendEmailAddress= new SendEmailAddress();
+        //TODO 先通过id把数据查询出来 判断是否存在，如果存在直接修改，不需要指定时间， 你这个是创建时间， 如果想要改成修改时间，可以在数据库在创建个修改时间的字段
         BeanUtils.copyProperties(condition,sendEmailAddress);
         //获取修改邮件时间
         Date now = new Date();
@@ -107,7 +109,7 @@ public class EmailAddressServerImpl implements EmailAddressServer {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
         PageHelper.startPage(pageNum, pageSize);
-        List  sysMenus = sendEmailAddressDao.selectPage(pageRequest.getSearchKey());
+        List sysMenus = sendEmailAddressDao.selectPage(pageRequest.getSearchKey());
         return new PageInfo(sysMenus);
     }
 }
