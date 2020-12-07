@@ -15,4 +15,6 @@ public interface EmailService {
     SendEmailMessage selectEmailById(Integer id);
 
     PageResult findPage(PageRequestCondition pageRequest);
+
+
 }

@@ -31,9 +31,10 @@ public class EmailAddressController {
 
     //查一条抄送人数据
     @ApiOperation(value = "查询单条抄送人邮件", response = CommResponse.class, notes = "查单条抄送人接口")
-    @RequestMapping(value = "/selectEmailById", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectEmailById", method = RequestMethod.POST)
     @ResponseBody
     public CommResponse selectEmailById(@RequestBody Integer id){
+
         SendEmailAddress sendEmailAddress =  emailAddressServer.selectEmailById(id);
         return CommResponse.success(sendEmailAddress);
     }
@@ -107,9 +108,8 @@ public class EmailAddressController {
     @ApiOperation(value = "修改抄送人邮件", response = CommResponse.class, notes = "修改抄送人邮件接口")
     @RequestMapping(value = "/updateByPrimaryKeySelective", method = RequestMethod.POST)
     @ResponseBody
-    public CommResponse updateByPrimaryKeySelective(@RequestBody EmailAddressCondition condition,
-                                                    @RequestBody Integer id){
-        log.info("修改抄送人接口", JSONObject.toJSONString(condition));
+    public CommResponse updateByPrimaryKeySelective(@RequestBody EmailAddressCondition condition){
+        log.info("修改抄送人接口");
 
         Boolean res = emailAddressServer.updateEmail(condition);
         return CommResponse.success(res);

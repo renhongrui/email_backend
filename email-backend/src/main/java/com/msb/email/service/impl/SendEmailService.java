@@ -1,5 +1,6 @@
 package com.msb.email.service.impl;
 
+import com.msb.email.condition.EmailAddressCondition;
 import com.msb.email.condition.EmailReportCondition;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.log4j.Log4j2;
@@ -151,4 +152,7 @@ public class SendEmailService {
         //获取thymeleaf的html模板
         return templateEngine.process("email.html",context); //指定模板路径
     }
+
+
+
 }

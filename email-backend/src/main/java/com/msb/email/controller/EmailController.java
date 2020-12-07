@@ -27,6 +27,7 @@ public class EmailController {
     @Autowired
     private EmailService emailService;
 
+
     @ApiOperation(value = "发送邮件", response = CommResponse.class, notes = "发送邮件接口")
     @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
     @ResponseBody
@@ -46,7 +47,6 @@ public class EmailController {
 
         List list = emailService.selectEmailList();
         return CommResponse.success(list);
-
     }
 
 

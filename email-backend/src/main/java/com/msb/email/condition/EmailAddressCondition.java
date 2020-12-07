@@ -7,6 +7,9 @@ import lombok.Data;
 @Data
 public class EmailAddressCondition {
 
+    @ApiModelProperty(value = "邮件编号")
+    private int id = 0;
+
     @ApiModelProperty(value = "Email地址")
     private String emailAddress = "无";
 

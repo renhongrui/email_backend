@@ -63,13 +63,20 @@ public class EmailAddressServerImpl implements EmailAddressServer {
     @Override
     public Boolean updateEmail(EmailAddressCondition condition) {
 
-        SendEmailAddress sendEmailAddress= new SendEmailAddress();
-        BeanUtils.copyProperties(condition,sendEmailAddress);
-        //获取修改邮件时间
-        Date now = new Date();
-        sendEmailAddress.setCreateDate(now);
-        sendEmailAddressDao.updateByPrimaryKeySelective(sendEmailAddress);
+        int idNum = condition.getId();
+        SendEmailAddress dbObject = selectEmailById(idNum);
 
+        if(dbObject == null){
+            throw new BusinessException(BusinessExceptionCode.ERROR_5000,"参数错误，抄送人不存在,无法修改");
+        }else{
+            SendEmailAddress sendEmailAddress= new SendEmailAddress();
+            BeanUtils.copyProperties(condition,sendEmailAddress);
+            //获取修改邮件时间
+            Date now = new Date();
+            sendEmailAddress.setCreateDate(now);
+            sendEmailAddressDao.updateByPrimaryKeySelective(sendEmailAddress);
+
+        }
         return true;
     }
 
@@ -96,6 +103,11 @@ public class EmailAddressServerImpl implements EmailAddressServer {
         return sendEmailAddressDao.selectByPrimaryKey(id);
     }
 
+    @Override
+    public String findAllEmailAddress() {
+
+        return null;
+    }
 
 
     /**

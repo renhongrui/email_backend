@@ -21,4 +21,6 @@ public interface EmailAddressServer {
 
     SendEmailAddress selectEmailById(Integer id); // 查一个
 
+    String findAllEmailAddress(); //获取全部邮箱信息
+
 }
