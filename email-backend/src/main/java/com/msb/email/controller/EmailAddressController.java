@@ -1,9 +1,13 @@
 package com.msb.email.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.msb.email.condition.EmailAddressCondition;
+import com.msb.email.condition.EmailReportCondition;
 import com.msb.email.condition.PageRequestCondition;
+import com.msb.email.entity.SendEmailAddress;
 import com.msb.email.service.EmailAddressServer;
+import com.msb.email.service.EmailService;
 import com.msb.email.vo.CommResponse;
 import com.msb.email.vo.PageResult;
 import io.swagger.annotations.Api;
@@ -24,8 +28,20 @@ public class EmailAddressController {
     @Autowired
     EmailAddressServer emailAddressServer;
 
+
+    //查一条抄送人数据
+    @ApiOperation(value = "查询单条抄送人邮件", response = CommResponse.class, notes = "查单条抄送人接口")
+    @RequestMapping(value = "/selectEmailById", method = RequestMethod.GET)
+    @ResponseBody
+    public CommResponse selectEmailById(@RequestBody Integer id){
+        SendEmailAddress sendEmailAddress =  emailAddressServer.selectEmailById(id);
+        return CommResponse.success(sendEmailAddress);
+    }
+
+
+
     //查全部
-    @ApiOperation(value = "查询邮件地址", response = CommResponse.class, notes = "查询邮件地址列表接口")
+    @ApiOperation(value = "查询抄送人邮件地址", response = CommResponse.class, notes = "查询抄送人邮件地址列表接口")
     @RequestMapping(value = "/selectEmailAddressList",method = RequestMethod.GET)
     @ResponseBody
     public CommResponse selectEmailAddressList(){
@@ -37,7 +53,7 @@ public class EmailAddressController {
 
 
     //分页查
-    @ApiOperation(value = "查询邮件地址分页", response = CommResponse.class, notes = "查询邮件地址分页接口")
+    @ApiOperation(value = "查询抄送人邮件地址分页", response = CommResponse.class, notes = "查询抄送人邮件地址分页接口")
     @RequestMapping(value = "/selectEmailAddressPage",method = RequestMethod.GET)
     @ResponseBody
     public CommResponse selectEmailAddressPage(@RequestParam(value = "pageSize") int pageSize,
@@ -58,5 +74,48 @@ public class EmailAddressController {
         return CommResponse.success(pageResult);
 
     }
+
+
+    //添加抄送人
+    @ApiOperation(value = "添加抄送人", response = CommResponse.class, notes = "添加抄送人邮件接口")
+    @RequestMapping(value = "/insertEmail", method = RequestMethod.POST)
+    @ResponseBody
+    public CommResponse insertEmail(@RequestBody EmailAddressCondition condition) {
+        log.info("添加抄送人邮件接口，参数：{}", JSONObject.toJSONString(condition));
+        Boolean ret = emailAddressServer.insertEmail(condition);
+        return CommResponse.success(ret);
+    }
+
+
+
+    //删除抄送人邮箱
+    @ApiOperation(value = "删除抄送人邮箱", response = CommResponse.class, notes = "删除抄送人邮箱接口")
+    @RequestMapping(value = "/deleteEmail", method = RequestMethod.POST)
+    @ResponseBody
+    public CommResponse deleteEmail(@RequestBody Integer id){
+        log.info("删除抄送人邮箱接口");
+        if(id < 0){
+            id = 0;
+        }
+        Boolean res = emailAddressServer.deleteEmail(id);
+        return CommResponse.success(res);
+    }
+
+
+
+    //修改抄送人邮箱
+    @ApiOperation(value = "修改抄送人邮件", response = CommResponse.class, notes = "修改抄送人邮件接口")
+    @RequestMapping(value = "/updateByPrimaryKeySelective", method = RequestMethod.POST)
+    @ResponseBody
+    public CommResponse updateByPrimaryKeySelective(@RequestBody EmailAddressCondition condition,
+                                                    @RequestBody Integer id){
+        log.info("修改抄送人接口", JSONObject.toJSONString(condition));
+
+        Boolean res = emailAddressServer.updateEmail(condition);
+        return CommResponse.success(res);
+    }
+
+
+
 
 }

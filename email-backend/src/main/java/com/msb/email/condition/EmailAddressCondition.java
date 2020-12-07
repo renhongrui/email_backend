@@ -1,7 +1,10 @@
 package com.msb.email.condition;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
+
+@Data
 public class EmailAddressCondition {
 
     @ApiModelProperty(value = "Email地址")

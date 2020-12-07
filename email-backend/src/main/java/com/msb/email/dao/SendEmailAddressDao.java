@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface SendEmailAddressDao {
 
-    int deleteByPrimaryKey(Integer id); //删
+    Boolean deleteByPrimaryKey(Integer id); //删
 
-    int updateByPrimaryKeySelective(SendEmailAddress record); //改
+    Boolean updateByPrimaryKeySelective(SendEmailAddress record); //改
 
-    int insertSelective(SendEmailAddress record); //增 option+ 回车   快速导包
+    int insertSelective(SendEmailAddress record); //增
 
-    SendEmailMessage selectByPrimaryKey(Integer id);
+    SendEmailAddress selectByPrimaryKey(Integer id); // 查一个
 
     List<SendEmailAddress> findAll();  //    查询全部
 
