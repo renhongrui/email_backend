@@ -37,10 +37,6 @@ public class EmailAddressServerImpl implements EmailAddressServer {
             throw new BusinessException(BusinessExceptionCode.ERROR_5000,"参数错误，抄送人邮件不能为空");
         }
 
-        //抄送人姓名
-        //TODO 这个属性没用就删掉
-        String emailName = condition.getEmailName();
-
 
         SendEmailAddress sendEmailAddress= new SendEmailAddress();
         BeanUtils.copyProperties(condition,sendEmailAddress);
@@ -83,7 +79,7 @@ public class EmailAddressServerImpl implements EmailAddressServer {
 
 
     @Override
-    public List selectEmailAddress() {
+    public List<SendEmailAddress> selectEmailAddress() {
         return sendEmailAddressDao.findAll();
     }
 

@@ -15,7 +15,7 @@ public interface EmailAddressServer {
 
     Boolean updateEmail(EmailAddressCondition condition); //改
 
-    List selectEmailAddress(); // 查全部
+    List<SendEmailAddress> selectEmailAddress(); // 查全部
 
     PageResult findPage(PageRequestCondition pageRequest); //分页
 
