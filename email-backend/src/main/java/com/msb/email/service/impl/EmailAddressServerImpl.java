@@ -38,6 +38,7 @@ public class EmailAddressServerImpl implements EmailAddressServer {
         }
 
         //抄送人姓名
+        //TODO 这个属性没用就删掉
         String emailName = condition.getEmailName();
 
 
@@ -75,7 +76,6 @@ public class EmailAddressServerImpl implements EmailAddressServer {
             Date now = new Date();
             sendEmailAddress.setCreateDate(now);
             sendEmailAddressDao.updateByPrimaryKeySelective(sendEmailAddress);
-
         }
         return true;
     }
@@ -119,7 +119,7 @@ public class EmailAddressServerImpl implements EmailAddressServer {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
         PageHelper.startPage(pageNum, pageSize);
-        List  sysMenus = sendEmailAddressDao.selectPage(pageRequest.getSearchKey());
+        List sysMenus = sendEmailAddressDao.selectPage(pageRequest.getSearchKey());
         return new PageInfo(sysMenus);
     }
 }

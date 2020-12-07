@@ -25,6 +25,7 @@ import java.util.List;
 @Log4j2
 public class EmailAddressController {
 
+    //TODO 属性添加private修饰符
     @Autowired
     EmailAddressServer emailAddressServer;
 
@@ -33,6 +34,7 @@ public class EmailAddressController {
     @ApiOperation(value = "查询单条抄送人邮件", response = CommResponse.class, notes = "查单条抄送人接口")
     @RequestMapping(value = "/selectEmailById", method = RequestMethod.POST)
     @ResponseBody
+    //TODO 一个参数使用@RequestParam 没必要传json
     public CommResponse selectEmailById(@RequestBody Integer id){
 
         SendEmailAddress sendEmailAddress =  emailAddressServer.selectEmailById(id);
@@ -46,7 +48,7 @@ public class EmailAddressController {
     @RequestMapping(value = "/selectEmailAddressList",method = RequestMethod.GET)
     @ResponseBody
     public CommResponse selectEmailAddressList(){
-
+        //TODO list 建议添加上泛型，比较规范
         List list = emailAddressServer.selectEmailAddress();
         return CommResponse.success(list);
 
@@ -95,6 +97,7 @@ public class EmailAddressController {
     @ResponseBody
     public CommResponse deleteEmail(@RequestBody Integer id){
         log.info("删除抄送人邮箱接口");
+        //TODO 这个判断不合理， 是删除用户，id如果小于0就是不合法，直接返回就行，你给id赋值为0，就等于删除了id为0的数据
         if(id < 0){
             id = 0;
         }
@@ -110,6 +113,8 @@ public class EmailAddressController {
     @ResponseBody
     public CommResponse updateByPrimaryKeySelective(@RequestBody EmailAddressCondition condition){
         log.info("修改抄送人接口");
+        // log.info 后面有参数需要指定占位符{}   log.info("修改抄送人接口{}", JSONObject.toJSONString(condition));
+        log.info("修改抄送人接口", JSONObject.toJSONString(condition));
 
         Boolean res = emailAddressServer.updateEmail(condition);
         return CommResponse.success(res);
