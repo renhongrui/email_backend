@@ -99,11 +99,6 @@ public class EmailAddressServerImpl implements EmailAddressServer {
         return sendEmailAddressDao.selectByPrimaryKey(id);
     }
 
-    @Override
-    public String findAllEmailAddress() {
-
-        return null;
-    }
 
 
     /**

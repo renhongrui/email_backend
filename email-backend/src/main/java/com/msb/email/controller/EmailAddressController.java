@@ -45,7 +45,7 @@ public class EmailAddressController {
 
 
     //查全部
-    @ApiOperation(value = "查询抄送人邮件地址", response = CommResponse.class, notes = "查询抄送人邮件地址列表接口")
+    @ApiOperation(value = "查询全部的抄送人邮件地址", response = CommResponse.class, notes = "查询全部抄送人邮件地址列表接口")
     @RequestMapping(value = "/selectEmailAddressList",method = RequestMethod.GET)
     @ResponseBody
     public CommResponse selectEmailAddressList(){
@@ -53,6 +53,28 @@ public class EmailAddressController {
         return CommResponse.success(list);
 
     }
+
+
+
+    //查询全部抄送人邮箱
+    @ApiOperation(value = "查询抄送人邮件", response = CommResponse.class, notes = "查询抄送人邮件接口")
+    @RequestMapping(value = "/selectEmailAddress",method = RequestMethod.GET)
+    @ResponseBody
+    public CommResponse selectEmailAddress(){
+        List<SendEmailAddress> list = emailAddressServer.selectEmailAddress();
+        StringBuffer str = new StringBuffer();
+        for(int i = 0; i < list.size(); i++){
+            str.append(list.get(i).getEmailAddress()+";");
+            str.toString().split(";");
+        }
+        return CommResponse.success(str);
+
+    }
+
+
+
+
+
 
 
     //分页查

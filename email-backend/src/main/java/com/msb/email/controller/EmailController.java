@@ -48,6 +48,7 @@ public class EmailController {
         List list = emailService.selectEmailList();
         return CommResponse.success(list);
     }
+    
 
 
     @ApiOperation(value = "查询指定编号邮件", response = CommResponse.class, notes = "查询指定编号邮件接口")
