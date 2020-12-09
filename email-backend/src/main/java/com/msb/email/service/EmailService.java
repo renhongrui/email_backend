@@ -1,5 +1,6 @@
 package com.msb.email.service;
 
+import com.msb.email.condition.EmailAddressCondition;
 import com.msb.email.condition.EmailReportCondition;
 import com.msb.email.entity.SendEmailMessage;
 import com.msb.email.condition.PageRequestCondition;

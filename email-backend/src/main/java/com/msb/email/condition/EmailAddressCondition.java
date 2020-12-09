@@ -20,4 +20,8 @@ public class EmailAddressCondition {
     private String remarks;
 
 
+    @ApiModelProperty(value = "类型1是添加，2是修改")
+    private int type;
+
+
 }

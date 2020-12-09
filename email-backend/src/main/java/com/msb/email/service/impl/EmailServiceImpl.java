@@ -1,10 +1,12 @@
 package com.msb.email.service.impl;
 
+import com.msb.email.condition.EmailAddressCondition;
 import com.msb.email.condition.EmailReportCondition;
 import com.msb.email.dao.*;
 import com.msb.email.entity.SendEmailMessage;
 import com.msb.email.exception.BusinessException;
 import com.msb.email.exception.BusinessExceptionCode;
+import com.msb.email.service.EmailAddressServer;
 import com.msb.email.service.EmailService;
 import com.msb.email.condition.PageRequestCondition;
 import com.msb.email.vo.PageResult;
@@ -28,6 +30,8 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private SendEmailMessageDao sendEmailMessageDao;
 
+
+
     @Override
     public Boolean sendEmail(EmailReportCondition condition) {
 
@@ -37,10 +41,10 @@ public class EmailServiceImpl implements EmailService {
         //收件人
         String toPerson = condition.getToPerson();
 
-        if(toPerson == null){
-            throw new BusinessException(BusinessExceptionCode.ERROR_5000,"参数错误，收件人不能为空");
-        }
-        String[] toPersons = toPerson.split(",");
+
+        String res = toPerson+"," + condition.getCcEmailAddress();
+
+        String[] toPersons = res.split(",");
 
         //获取邮件内容
         String content = sendEmailService.getContent(condition);

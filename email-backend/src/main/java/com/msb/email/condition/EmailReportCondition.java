@@ -66,4 +66,8 @@ public class EmailReportCondition {
     @ApiModelProperty(value = "收件人")
     private String toPerson;
 
+    @ApiModelProperty(value = "默认收件人")
+    private String ccEmailAddress;
+
+
 }

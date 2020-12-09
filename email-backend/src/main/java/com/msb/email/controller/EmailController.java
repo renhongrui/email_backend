@@ -2,6 +2,7 @@ package com.msb.email.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.msb.email.condition.EmailAddressCondition;
 import com.msb.email.condition.EmailReportCondition;
 import com.msb.email.condition.PageRequestCondition;
 import com.msb.email.entity.SendEmailMessage;
