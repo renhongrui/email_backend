@@ -10,7 +10,7 @@
     <table border="2" bordercolor="black" cellspacing="0" cellpadding="5" style="width: 80%; margin-top: 20px;text-align: center;">
         <tbody>
         <tr>
-            <td style="width: 20%" rowspan="6">提测信息</td>
+            <td style="width: 20%" rowspan="4">提测信息</td>
             <td style="width: 20%">项目名称</td>
             <td style="width: 50%;">
                 <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${projectName}">
@@ -38,20 +38,20 @@
                     准入Case执行情况
                 </div></td>
         </tr>
-        <tr>
-            <td style="width: 20%">产品验收通过</td>
-            <td style="width: 50%;">
-                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none"  th:text="${productsResult}">
-                    产品验收通过
-                </div></td>
-        </tr>
-        <tr>
-            <td style="width: 20%">UI验收通过</td>
-            <td style="width: 50%;">
-                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none"  th:text="${uiResult}">
-                    UI验收通过
-                </div></td>
-        </tr>
+<!--        <tr th:height="0">-->
+<!--            <td style="width: 20%" colspan="2" rowspan="2"></td>-->
+<!--&lt;!&ndash;            <td style="width: 50%;">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none"  th:text="${productsResult}">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </div></td>&ndash;&gt;-->
+<!--        </tr>-->
+<!--        <tr th:height="0">-->
+<!--&lt;!&ndash;            <td style="width: 20%"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td style="width: 50%;">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none"  th:text="${uiResult}">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </div></td>&ndash;&gt;-->
+<!--        </tr>-->
         <tr>
             <td style="width: 20%" rowspan="5">人员信息</td>
             <td style="width: 20%">产品经理</td>
@@ -89,34 +89,34 @@
                 </div></td>
         </tr>
         <tr>
-            <td style="width: 20%" rowspan="4">联调情况</td>
+            <td style="width: 20%" rowspan="1">联调情况</td>
             <td style="width: 20%">前端和后端联调</td>
             <td style="width: 50%;">
                 <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${frontEndDebug}">
                    前端和后端联调
                 </div></td>
         </tr>
-        <tr>
-            <td style="width: 20%">移动端和服务端联调</td>
-            <td style="width: 50%;">
-                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${appServerDebug}">
-                    移动端和服务端联调
-                </div></td>
-        </tr>
-        <tr>
-            <td style="width: 20%">跨业务端联调</td>
-            <td style="width: 50%;">
-                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${throughDebug}">
-                    跨业务端联调
-                </div></td>
-        </tr>
-        <tr>
-            <td style="width: 20%">同第三方联调</td>
-            <td style="width: 50%;">
-                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${threeDebug}">
-                    同第三方联调
-                </div></td>
-        </tr>
+<!--        <tr>-->
+<!--            <td style="width: 20%">移动端和服务端联调</td>-->
+<!--            <td style="width: 50%;">-->
+<!--                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${appServerDebug}">-->
+<!--                    移动端和服务端联调-->
+<!--                </div></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td style="width: 20%">跨业务端联调</td>-->
+<!--            <td style="width: 50%;">-->
+<!--                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${throughDebug}">-->
+<!--                    跨业务端联调-->
+<!--                </div></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td style="width: 20%">同第三方联调</td>-->
+<!--            <td style="width: 50%;">-->
+<!--                <div contenteditable="true" style="overflow-x: hidden;overflow-y: auto;outline: none" th:text="${threeDebug}">-->
+<!--                    同第三方联调-->
+<!--                </div></td>-->
+<!--        </tr>-->
         <tr>
             <td style="width: 20%" rowspan="2">内容详情</td>
             <td style="width: 20%">git仓库地址</td>
