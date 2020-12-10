@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.PageHelper;
+import org.springframework.web.util.HtmlUtils;
 
 import javax.mail.MessagingException;
 import java.util.Date;
@@ -48,10 +49,12 @@ public class EmailServiceImpl implements EmailService {
 
         //获取邮件内容
         String content = sendEmailService.getContent(condition);
+
         String from;
         //发送邮件
         try {
-            from = sendEmailService.sendHtmlMail(toPersons,projectName,content);
+            //HtmlUtils.htmlUnescape(content) html转义
+            from = sendEmailService.sendHtmlMail(toPersons,projectName,HtmlUtils.htmlUnescape(content));
         } catch (MessagingException e) {
             throw new BusinessException(BusinessExceptionCode.ERROR_5001,"发送邮件失败");
         }

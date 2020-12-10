@@ -1,8 +1,6 @@
 package com.msb.email.service.impl;
 
-import com.msb.email.condition.EmailAddressCondition;
 import com.msb.email.condition.EmailReportCondition;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,6 +59,7 @@ public class SendEmailService {
         log.info("发送HTML邮件开始：{},{},{}", to, subject, content);
         //使用MimeMessage，MIME协议
         MimeMessage message = mailSender.createMimeMessage();
+        message.setHeader("Content-Transfer-Encoding", "base64");
 
         MimeMessageHelper helper;
         //MimeMessageHelper帮助我们设置更丰富的内容
@@ -149,6 +148,7 @@ public class SendEmailService {
         context.setVariable("gitUrl",condition.getGitUrl());
         context.setVariable("girName",condition.getGirName());
         context.setVariable("result",condition.getResult());
+        context.setVariable("content",condition.getContent());
         //获取thymeleaf的html模板
         return templateEngine.process("email.html",context); //指定模板路径
     }
