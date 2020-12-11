@@ -19,10 +19,6 @@ public class SendEmailMessage implements Serializable {
 
     private String caseInfo;
 
-    private String productsResult;
-
-    private String uiResult;
-
     private String productManager;
 
     private String webDeveloper;
@@ -34,12 +30,6 @@ public class SendEmailMessage implements Serializable {
     private String clientDeveloper;
 
     private String frontEndDebug;
-
-    private String appServerDebug;
-
-    private String throughDebug;
-
-    private String threeDebug;
 
     private String gitUrl;
 
@@ -113,22 +103,6 @@ public class SendEmailMessage implements Serializable {
         this.caseInfo = caseInfo == null ? null : caseInfo.trim();
     }
 
-    public String getProductsResult() {
-        return productsResult;
-    }
-
-    public void setProductsResult(String productsResult) {
-        this.productsResult = productsResult == null ? null : productsResult.trim();
-    }
-
-    public String getUiResult() {
-        return uiResult;
-    }
-
-    public void setUiResult(String uiResult) {
-        this.uiResult = uiResult == null ? null : uiResult.trim();
-    }
-
     public String getProductManager() {
         return productManager;
     }
@@ -175,30 +149,6 @@ public class SendEmailMessage implements Serializable {
 
     public void setFrontEndDebug(String frontEndDebug) {
         this.frontEndDebug = frontEndDebug == null ? null : frontEndDebug.trim();
-    }
-
-    public String getAppServerDebug() {
-        return appServerDebug;
-    }
-
-    public void setAppServerDebug(String appServerDebug) {
-        this.appServerDebug = appServerDebug == null ? null : appServerDebug.trim();
-    }
-
-    public String getThroughDebug() {
-        return throughDebug;
-    }
-
-    public void setThroughDebug(String throughDebug) {
-        this.throughDebug = throughDebug == null ? null : throughDebug.trim();
-    }
-
-    public String getThreeDebug() {
-        return threeDebug;
-    }
-
-    public void setThreeDebug(String threeDebug) {
-        this.threeDebug = threeDebug == null ? null : threeDebug.trim();
     }
 
     public String getGitUrl() {

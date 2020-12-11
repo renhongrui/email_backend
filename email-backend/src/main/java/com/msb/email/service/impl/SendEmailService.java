@@ -134,17 +134,12 @@ public class SendEmailService {
         context.setVariable("subidescribe",condition.getSubmitDescribe());
         context.setVariable("codeReview",condition.getCodeReview());
         context.setVariable("caseInfo",condition.getCaseInfo());
-        context.setVariable("productsResult",condition.getProductsResult());
-        context.setVariable("uiResult",condition.getUiResult());
         context.setVariable("productManager",condition.getProductManager());
         context.setVariable("webDeveloper",condition.getWebDeveloper());
         context.setVariable("backEndDeveloper",condition.getBackEndDeveloper());
         context.setVariable("clientDeveloper",condition.getClientDeveloper());
         context.setVariable("tester",condition.getTester());
         context.setVariable("frontEndDebug",condition.getFrontEndDebug());
-        context.setVariable("appServerDebug",condition.getAppServerDebug());
-        context.setVariable("throughDebug",condition.getThroughDebug());
-        context.setVariable("threeDebug",condition.getThreeDebug());
         context.setVariable("gitUrl",condition.getGitUrl());
         context.setVariable("girName",condition.getGirName());
         context.setVariable("result",condition.getResult());

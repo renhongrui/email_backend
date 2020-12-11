@@ -9,17 +9,12 @@
     <result column="submit_describe" jdbcType="VARCHAR" property="submitDescribe" />
     <result column="code_review" jdbcType="VARCHAR" property="codeReview" />
     <result column="case_info" jdbcType="VARCHAR" property="caseInfo" />
-    <result column="products_result" jdbcType="VARCHAR" property="productsResult" />
-    <result column="ui__result" jdbcType="VARCHAR" property="uiResult" />
     <result column="product_manager" jdbcType="VARCHAR" property="productManager" />
     <result column="web_developer" jdbcType="VARCHAR" property="webDeveloper" />
     <result column="back_end_developer" jdbcType="VARCHAR" property="backEndDeveloper" />
     <result column="tester" jdbcType="VARCHAR" property="tester" />
     <result column="client_developer" jdbcType="VARCHAR" property="clientDeveloper" />
     <result column="front_end_debug" jdbcType="VARCHAR" property="frontEndDebug" />
-    <result column="app_server_debug" jdbcType="VARCHAR" property="appServerDebug" />
-    <result column="through_debug" jdbcType="VARCHAR" property="throughDebug" />
-    <result column="three_debug" jdbcType="VARCHAR" property="threeDebug" />
     <result column="git_url" jdbcType="VARCHAR" property="gitUrl" />
     <result column="gir_name" jdbcType="VARCHAR" property="girName" />
     <result column="result" jdbcType="VARCHAR" property="result" />
@@ -30,8 +25,8 @@
   </resultMap>
   <sql id="Base_Column_List">
     id, project_name, create_time, creator, submit_describe, code_review, case_info, 
-    products_result, ui__result, product_manager, web_developer, back_end_developer, 
-    tester, client_developer, front_end_debug, app_server_debug, through_debug, three_debug, 
+    product_manager, web_developer, back_end_developer,
+    tester, client_developer, front_end_debug,
     git_url, gir_name, result, modify_time, reviser, from_person, to_person
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -47,19 +42,17 @@
   <insert id="insert" parameterType="com.msb.email.entity.SendEmailMessage">
     insert into msb_send_email_message (id, project_name, create_time, 
       creator, submit_describe, code_review, 
-      case_info, products_result, ui__result, 
+      case_info,
       product_manager, web_developer, back_end_developer, 
-      tester, client_developer, front_end_debug, 
-      app_server_debug, through_debug, three_debug, 
+      tester, client_developer, front_end_debug,
       git_url, gir_name, result, 
       modify_time, reviser, from_person, 
       to_person)
     values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{creator,jdbcType=VARCHAR}, #{submitDescribe,jdbcType=VARCHAR}, #{codeReview,jdbcType=VARCHAR}, 
-      #{caseInfo,jdbcType=VARCHAR}, #{productsResult,jdbcType=VARCHAR}, #{uiResult,jdbcType=VARCHAR}, 
+      #{caseInfo,jdbcType=VARCHAR},
       #{productManager,jdbcType=VARCHAR}, #{webDeveloper,jdbcType=VARCHAR}, #{backEndDeveloper,jdbcType=VARCHAR}, 
-      #{tester,jdbcType=VARCHAR}, #{clientDeveloper,jdbcType=VARCHAR}, #{frontEndDebug,jdbcType=VARCHAR}, 
-      #{appServerDebug,jdbcType=VARCHAR}, #{throughDebug,jdbcType=VARCHAR}, #{threeDebug,jdbcType=VARCHAR}, 
+      #{tester,jdbcType=VARCHAR}, #{clientDeveloper,jdbcType=VARCHAR}, #{frontEndDebug,jdbcType=VARCHAR},
       #{gitUrl,jdbcType=VARCHAR}, #{girName,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
       #{modifyTime,jdbcType=TIMESTAMP}, #{reviser,jdbcType=VARCHAR}, #{fromPerson,jdbcType=VARCHAR}, 
       #{toPerson,jdbcType=VARCHAR})
@@ -88,12 +81,6 @@
       <if test="caseInfo != null">
         case_info,
       </if>
-      <if test="productsResult != null">
-        products_result,
-      </if>
-      <if test="uiResult != null">
-        ui__result,
-      </if>
       <if test="productManager != null">
         product_manager,
       </if>
@@ -111,15 +98,6 @@
       </if>
       <if test="frontEndDebug != null">
         front_end_debug,
-      </if>
-      <if test="appServerDebug != null">
-        app_server_debug,
-      </if>
-      <if test="throughDebug != null">
-        through_debug,
-      </if>
-      <if test="threeDebug != null">
-        three_debug,
       </if>
       <if test="gitUrl != null">
         git_url,
@@ -165,12 +143,6 @@
       <if test="caseInfo != null">
         #{caseInfo,jdbcType=VARCHAR},
       </if>
-      <if test="productsResult != null">
-        #{productsResult,jdbcType=VARCHAR},
-      </if>
-      <if test="uiResult != null">
-        #{uiResult,jdbcType=VARCHAR},
-      </if>
       <if test="productManager != null">
         #{productManager,jdbcType=VARCHAR},
       </if>
@@ -188,15 +160,6 @@
       </if>
       <if test="frontEndDebug != null">
         #{frontEndDebug,jdbcType=VARCHAR},
-      </if>
-      <if test="appServerDebug != null">
-        #{appServerDebug,jdbcType=VARCHAR},
-      </if>
-      <if test="throughDebug != null">
-        #{throughDebug,jdbcType=VARCHAR},
-      </if>
-      <if test="threeDebug != null">
-        #{threeDebug,jdbcType=VARCHAR},
       </if>
       <if test="gitUrl != null">
         #{gitUrl,jdbcType=VARCHAR},
@@ -242,12 +205,6 @@
       <if test="caseInfo != null">
         case_info = #{caseInfo,jdbcType=VARCHAR},
       </if>
-      <if test="productsResult != null">
-        products_result = #{productsResult,jdbcType=VARCHAR},
-      </if>
-      <if test="uiResult != null">
-        ui__result = #{uiResult,jdbcType=VARCHAR},
-      </if>
       <if test="productManager != null">
         product_manager = #{productManager,jdbcType=VARCHAR},
       </if>
@@ -265,15 +222,6 @@
       </if>
       <if test="frontEndDebug != null">
         front_end_debug = #{frontEndDebug,jdbcType=VARCHAR},
-      </if>
-      <if test="appServerDebug != null">
-        app_server_debug = #{appServerDebug,jdbcType=VARCHAR},
-      </if>
-      <if test="throughDebug != null">
-        through_debug = #{throughDebug,jdbcType=VARCHAR},
-      </if>
-      <if test="threeDebug != null">
-        three_debug = #{threeDebug,jdbcType=VARCHAR},
       </if>
       <if test="gitUrl != null">
         git_url = #{gitUrl,jdbcType=VARCHAR},
@@ -307,17 +255,12 @@
       submit_describe = #{submitDescribe,jdbcType=VARCHAR},
       code_review = #{codeReview,jdbcType=VARCHAR},
       case_info = #{caseInfo,jdbcType=VARCHAR},
-      products_result = #{productsResult,jdbcType=VARCHAR},
-      ui__result = #{uiResult,jdbcType=VARCHAR},
       product_manager = #{productManager,jdbcType=VARCHAR},
       web_developer = #{webDeveloper,jdbcType=VARCHAR},
       back_end_developer = #{backEndDeveloper,jdbcType=VARCHAR},
       tester = #{tester,jdbcType=VARCHAR},
       client_developer = #{clientDeveloper,jdbcType=VARCHAR},
       front_end_debug = #{frontEndDebug,jdbcType=VARCHAR},
-      app_server_debug = #{appServerDebug,jdbcType=VARCHAR},
-      through_debug = #{throughDebug,jdbcType=VARCHAR},
-      three_debug = #{threeDebug,jdbcType=VARCHAR},
       git_url = #{gitUrl,jdbcType=VARCHAR},
       gir_name = #{girName,jdbcType=VARCHAR},
       result = #{result,jdbcType=VARCHAR},

@@ -21,12 +21,6 @@ public class EmailReportCondition {
     @ApiModelProperty(value = "准入Case执行情况")
     private String caseInfo = "无";
 
-    @ApiModelProperty(value = "产品验收通过")
-    private String productsResult;
-
-    @ApiModelProperty(value = "UI验收通过")
-    private String uiResult;
-
     @ApiModelProperty(value = "产品经理")
     private String productManager;
 
@@ -44,15 +38,6 @@ public class EmailReportCondition {
 
     @ApiModelProperty(value = "前端和后端联调")
     private String frontEndDebug;
-
-    @ApiModelProperty(value = "移动端和服务端联调")
-    private String appServerDebug;
-
-    @ApiModelProperty(value = "跨业务端联调")
-    private String throughDebug;
-
-    @ApiModelProperty(value = "同第三方联调")
-    private String threeDebug;
 
     @ApiModelProperty(value = "git仓库地址")
     private String gitUrl;

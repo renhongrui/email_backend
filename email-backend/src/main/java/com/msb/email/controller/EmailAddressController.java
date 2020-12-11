@@ -64,10 +64,6 @@ public class EmailAddressController {
     public CommResponse selectEmailAddress(){
         List<SendEmailAddress> list = emailAddressServer.selectEmailAddress();
 
-//        String ss = list
-//                .stream()
-//                .map(SendEmailAddress::getEmailAddress)
-//                .collect(Collectors.joining(","));
 
         StringBuffer str = new StringBuffer();
         for(int i = 0; i < list.size(); i++){
@@ -141,7 +137,7 @@ public class EmailAddressController {
     @ResponseBody
     public CommResponse updateByPrimaryKeySelective(@RequestBody EmailAddressCondition condition){
         log.info("修改抄送人接口");
-        // log.info 后面有参数需要指定占位符{}   log.info("修改抄送人接口{}", JSONObject.toJSONString(condition));
+
         Boolean res;
         if(condition.getType() == 2){
             log.info("添加抄送人邮件接口，参数：{}", JSONObject.toJSONString(condition));
